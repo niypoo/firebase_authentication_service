@@ -53,7 +53,7 @@ class FirebaseAuthenticationService extends GetxService {
           status.value = AuthenticationStatus.Fetching;
 
           // get user from external database
-          userDataUpdate();
+          await userDataUpdate();
 
           // Abstract Event Handler Trigger
           await userFromExternalDatabase
