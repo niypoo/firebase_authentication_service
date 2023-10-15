@@ -53,7 +53,7 @@ class FirebaseAuthenticationService extends GetxService {
           status.value = AuthenticationStatus.Fetching;
 
           // get user from external database
-          user.value = await userFromExternalDatabase.externalUserSync(payload);
+          userDataUpdate();
 
           // Abstract Event Handler Trigger
           await userFromExternalDatabase
@@ -73,6 +73,15 @@ class FirebaseAuthenticationService extends GetxService {
       },
     );
     return this;
+  }
+
+  // get user from external database
+  Future<void> userDataUpdate() async {
+    // skip
+    if (firebaseUser.value == null) return;
+    // update user from server
+    user.value =
+        await userFromExternalDatabase.externalUserSync(firebaseUser.value!);
   }
 
   /// Sign Out ///
