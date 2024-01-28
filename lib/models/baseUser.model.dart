@@ -9,6 +9,7 @@ abstract class BaseUser {
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final Map<String, dynamic>? fcmToken;
+  final Map<String, bool>? permission;
 
   BaseUser({
     required this.id,
@@ -21,10 +22,11 @@ abstract class BaseUser {
     this.fcmToken,
     this.createdAt,
     this.updatedAt,
+    this.permission,
   });
 
   Map<String, dynamic> toData();
-
+  bool isAllow(); //has permission
   Set<String> get tokens;
   String get getDisplayName;
 }
