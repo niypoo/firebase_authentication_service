@@ -26,6 +26,7 @@ abstract class BaseUser {
   });
 
   Map<String, dynamic> toData();
+  bool isAllow(BaseUser user, String key);
   Set<String> get tokens;
   String get getDisplayName;
 }
