@@ -6,6 +6,7 @@ abstract class BaseUser {
   final String? photoUrl;
   final String? provider;
   final bool isAnonymous;
+  final dynamic type;
   final bool primary;
   final DateTime? createdAt;
   final DateTime? updatedAt;
@@ -20,12 +21,13 @@ abstract class BaseUser {
     this.provider,
     this.isAnonymous = false,
     this.primary = false,
+    this.type,
     this.fcmToken,
     this.createdAt,
     this.updatedAt,
   });
 
   Map<String, dynamic> toData();
-  Set<String> get tokens;
+  Set<String> get getFCMTokens;
   String get getDisplayName;
 }
