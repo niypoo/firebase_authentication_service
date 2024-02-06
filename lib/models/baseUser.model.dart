@@ -2,6 +2,7 @@ abstract class BaseUser {
   final String id;
   final String? displayName;
   final String? email;
+  final String? phone;
   final String? photoUrl;
   final String? provider;
   final bool isAnonymous;
@@ -13,6 +14,7 @@ abstract class BaseUser {
   BaseUser({
     required this.id,
     this.displayName,
+    this.phone,
     this.photoUrl,
     this.email,
     this.provider,
