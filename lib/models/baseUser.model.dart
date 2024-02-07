@@ -1,5 +1,6 @@
 abstract class BaseUser {
   final String id;
+  final String uid;
   final String? displayName;
   final String? email;
   final String? phone;
@@ -14,6 +15,7 @@ abstract class BaseUser {
 
   BaseUser({
     required this.id,
+    required this.uid,
     this.displayName,
     this.phone,
     this.photoUrl,
