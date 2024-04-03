@@ -42,7 +42,6 @@ class FirebaseAuthenticationService extends GetxService {
     //initialization User Stream
     fbAuth.FirebaseAuth.instance.authStateChanges().listen(
       (fbAuth.User? payload) async {
-        print('[[[[[[payload]]]]]] ${payload}');
         if (payload != null) {
           // change Authentication status
           status.value = AuthenticationStatus.Authenticating;
@@ -101,7 +100,6 @@ class FirebaseAuthenticationService extends GetxService {
 
   /// routing for navigate user to correct route by authentication state
   Future<void>? routing() async {
-    print('[[[[[[isAuthenticated.value]]]]]] ${isAuthenticated.value}');
     // In case initialization and still firebase auth try to figure-out
     // user auth status
     if (isAuthenticated.value == null) {
