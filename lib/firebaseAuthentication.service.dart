@@ -116,11 +116,13 @@ class FirebaseAuthenticationService extends GetxService {
         return Get.offAllNamed(authenticatedRouting.authenticationRouteName);
       }
 
-      // trigger only after authenticated
-      await userFromExternalDatabase.afterHomeRouteRedirect(user.value!);
-
       // final case if user has authenticated
       Get.offAllNamed(authenticatedRouting.homeRouteName);
+
+      // delay
+      await Future.delayed(const Duration(milliseconds: 300));
+      // trigger only after authenticated
+      await userFromExternalDatabase.afterHomeRouteRedirect(user.value!);
     }
   }
 }
