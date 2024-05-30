@@ -80,8 +80,20 @@ class FirebaseAuthenticationService extends GetxService {
     // skip
     if (firebaseUser.value == null) return;
     // update user from server
+    await userFromExternalDatabase.updateUserData(firebaseUser.value!);
+
+    // sync user data
+    await syncUserObject();
+  }
+
+  // get user from external database
+  Future<void> syncUserObject() async {
+    // skip
+    if (firebaseUser.value == null) return;
+
+    // update user from server
     user.value =
-        await userFromExternalDatabase.externalUserSync(firebaseUser.value!);
+        await userFromExternalDatabase.syncUserObject(firebaseUser.value!);
   }
 
   /// Sign Out ///

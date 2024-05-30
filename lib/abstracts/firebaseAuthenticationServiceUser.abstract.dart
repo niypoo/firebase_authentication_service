@@ -5,8 +5,11 @@ abstract class FirebaseAuthenticationServiceUser {
   // [GET/SET] user from external database
   // Set in case user register as first time
   // Get in case user has already registered
-  Future<BaseUser> externalUserSync(User firebaseUserId);
+  Future<void> updateUserData(User firebaseUserId);
   // Credential credential
+
+  // refresh user object data from external backend
+  Future<BaseUser> syncUserObject(User firebaseUserId);
 
   // function that trigger only after authenticated and home route REDIRECTED
   // usually used for trigger som functions that sure user is authenticated
