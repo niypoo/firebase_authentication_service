@@ -37,11 +37,12 @@ class FirebaseAuthenticationService extends GetxService {
 
   Future<FirebaseAuthenticationService> init() async {
     // to avoid freezing in Initializing state
-    await fbAuth.FirebaseAuth.instance.authStateChanges().first;
+    // await fbAuth.FirebaseAuth.instance.authStateChanges().first;
 
     //initialization User Stream
     fbAuth.FirebaseAuth.instance.authStateChanges().listen(
       (fbAuth.User? payload) async {
+        print('authStateChanges payload <<<<$payload>>>>');
         if (payload != null) {
           // change Authentication status
           status.value = AuthenticationStatus.Authenticating;
