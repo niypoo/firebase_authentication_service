@@ -83,8 +83,6 @@ class FirebaseAuthenticationService extends GetxService {
       (_) {
         if (_ != null) completer.complete(user.value);
       },
-      onDone: () => completer.complete(user.value),
-      onError: () => completer.complete(user.value),
     );
 
     return completer.future;
