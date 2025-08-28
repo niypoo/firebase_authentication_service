@@ -75,6 +75,18 @@ class FirebaseAuthenticationService extends GetxService {
     return this;
   }
 
+  // completer to wait stream return user
+  Future<BaseUser> userCompleter() async {
+    final Completer<BaseUser> completer = Completer();
+    user.listen((_) {
+      if (_ != null) {
+        completer.complete(_);
+      }
+    });
+
+    return completer.future;
+  }
+
   // get user from external database
   Future<void> userDataUpdate() async {
     // skip
