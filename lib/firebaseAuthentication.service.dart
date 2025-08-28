@@ -78,9 +78,12 @@ class FirebaseAuthenticationService extends GetxService {
   // completer to wait stream return user
   Future<void> authenticationCompleter() async {
     Completer<void> _complete = Completer();
+      print('<<<<<isAuthenticated>>>> Start');
     isAuthenticated.listen((event) {
       print('<<<<<isAuthenticated>>>> $event');
-      if (event != null) _complete.complete();
+      if (event == null){}else{
+        _complete.complete();
+      } 
     }).onDone(() {
       _complete.complete();
     });
