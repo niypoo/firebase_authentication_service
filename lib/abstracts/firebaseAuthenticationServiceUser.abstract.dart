@@ -11,10 +11,11 @@ abstract class FirebaseAuthenticationServiceUser {
   // refresh user object data from external backend
   Future<BaseUser> syncUserObject(User firebaseUserId);
 
-  // function that trigger only after authenticated and home route REDIRECTED
-  // usually used for trigger som functions that sure user is authenticated
-  // such as local notification init or disclaimers
-  Future<void> afterHomeRouteRedirect(BaseUser user);
+  // deprecated
+  // // function that trigger only after authenticated and home route REDIRECTED
+  // // usually used for trigger som functions that sure user is authenticated
+  // // such as local notification init or disclaimers
+  // Future<void> afterHomeRouteRedirect(BaseUser user);
 
   // function that trigger after listen function trigger
   // and user object created
