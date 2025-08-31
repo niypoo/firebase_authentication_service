@@ -81,7 +81,6 @@ class FirebaseAuthenticationService extends GetxService {
 
     isAuthenticated.listen(
       (_) {
-        print('<<<<<isAuthenticated>>>> $_');
         if (_ != null) completer.complete(user.value);
       },
     );
