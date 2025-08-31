@@ -1,5 +1,5 @@
-// abstract class FirebaseAuthenticationServiceRoutingHandler {
-//   late String authenticationRouteName;
-//   late String homeRouteName;
-//   late String splashRouteName;
-// }
+abstract class FirebaseAuthenticationServiceRoutingHandler {
+  late String authenticationRouteName;
+  late String homeRouteName;
+  late String splashRouteName;
+}
