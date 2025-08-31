@@ -79,15 +79,11 @@ class FirebaseAuthenticationService extends GetxService {
   Future<void> authenticationCompleter() async {
     final Completer<void> completer = Completer();
 
-    if (isAuthenticated.value != null && !completer.isCompleted) {
-      completer.complete();
-    }
+    if(isAuthenticated.value!= null){completer.complete();}
 
     isAuthenticated.listen(
       (_) {
-        if (_ != null && !completer.isCompleted) {
-          completer.complete();
-        }
+        if (_ != null) completer.complete();
       },
     );
     
