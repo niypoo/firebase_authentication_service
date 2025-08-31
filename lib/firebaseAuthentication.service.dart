@@ -76,15 +76,17 @@ class FirebaseAuthenticationService extends GetxService {
   }
 
   // completer to wait stream return user
-  Future<void> authenticationCompleter() async {
-    Completer<void> _complete = Completer();
-    isAuthenticated.listen((event) {
-      print('<<<<<isAuthenticated>>>> $event');
-      if (event != null) _complete.complete();
-    }).onDone(() {
-      _complete.complete();
-    });
-    return _complete.future;
+  Future<BaseUser?> authenticationCompleter() async {
+    final Completer<BaseUser?> completer = Completer();
+
+    isAuthenticated.listen(
+      (_) {
+        print('<<<<<isAuthenticated>>>> $_');
+        if (_ != null) completer.complete(user.value);
+      },
+    );
+
+    return completer.future;
   }
 
   // get user from external database
@@ -121,6 +123,7 @@ class FirebaseAuthenticationService extends GetxService {
     // then delete user data from firebase auth
     await firebaseUser.value!.delete();
   }
+
 
   // deprecated
   // /// routing for navigate user to correct route by authentication state
