@@ -124,16 +124,16 @@ class FirebaseAuthenticationService extends GetxService {
 
   /// routing for navigate user to correct route by authentication state
   Future<void>? routing() async {
-    // In case initialization and still firebase auth try to figure-out
-    // user auth status
-    if (isAuthenticated.value == null) {
-      return Get.offAllNamed(authenticatedRouting.splashRouteName);
-    }
+    // // In case initialization and still firebase auth try to figure-out
+    // // user auth status
+    // if (isAuthenticated.value == null) {
+    //   return Get.offAllNamed(authenticatedRouting.splashRouteName);
+    // }
 
     // in case firebase has done and figure-out
     if (isAuthenticated.value != null) {
-      // delay to avoid issue that happened coze context-less
-      await Future.delayed(const Duration(milliseconds: 300));
+      // // delay to avoid issue that happened coze context-less
+      // await Future.delayed(const Duration(milliseconds: 300));
 
       // in case user has un-authenticated
       if (isAuthenticated.isFalse!) {
