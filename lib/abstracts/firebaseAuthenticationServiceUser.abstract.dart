@@ -14,13 +14,13 @@ abstract class FirebaseAuthenticationServiceUser {
   // function that trigger only after authenticated and home route REDIRECTED
   // usually used for trigger som functions that sure user is authenticated
   // such as local notification init or disclaimers
-  Future<void> afterHomeRouteRedirect(BaseUser user);
+  // Future<void> afterHomeRouteRedirect(BaseUser user);
 
   // function that trigger after listen function trigger
   // and user object created
-  Future<void> onAuthenticatedBeforeStatusChanges(BaseUser user);
+  // Future<void> onAuthenticatedBeforeStatusChanges(BaseUser user);
 
-  Future<void> onFullyAuthenticated(BaseUser user);
+  // Future<void> onFullyAuthenticated(BaseUser user);
 
   // function that trigger only in logged-out
   Future<void> onSignOut(BaseUser user);

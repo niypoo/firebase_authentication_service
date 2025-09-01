@@ -55,15 +55,15 @@ class FirebaseAuthenticationService extends GetxService {
           // get user from external database
           await userDataUpdate();
 
-          // Abstract Event Handler Trigger
-          await userFromExternalDatabase
-              .onAuthenticatedBeforeStatusChanges(user.value!);
+          // // Abstract Event Handler Trigger
+          // await userFromExternalDatabase
+          //     .onAuthenticatedBeforeStatusChanges(user.value!);
 
           // then make him as authentication
           isAuthenticated.value = true;
 
           // Abstract Event Handler Trigger
-          await userFromExternalDatabase.onFullyAuthenticated(user.value!);
+          // await userFromExternalDatabase.onFullyAuthenticated(user.value!);
         } else {
           // to trigger  handle Auth State Route
           firebaseUser.value = null;
@@ -144,9 +144,9 @@ class FirebaseAuthenticationService extends GetxService {
       Get.offAllNamed(authenticatedRouting.homeRouteName);
 
       // delay
-      await Future.delayed(const Duration(milliseconds: 300));
+      // await Future.delayed(const Duration(milliseconds: 300));
       // trigger only after authenticated
-      await userFromExternalDatabase.afterHomeRouteRedirect(user.value!);
+      // await userFromExternalDatabase.afterHomeRouteRedirect(user.value!);
     }
   }
 }
