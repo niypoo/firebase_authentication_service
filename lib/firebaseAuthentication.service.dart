@@ -141,8 +141,8 @@ class FirebaseAuthenticationService extends GetxService {
         Get.offAllNamed(authenticatedRouting.homeRouteName);
       }
     // to avoid not trigger addPostFrameCallback again
-    //  SchedulerBinding.instance.endOfFrame;
+     SchedulerBinding.instance.endOfFrame;
     });
-    WidgetsBinding.instance.ensureVisualUpdate();
+    // WidgetsBinding.instance.ensureVisualUpdate();
   }
 }
