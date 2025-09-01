@@ -126,6 +126,8 @@ class FirebaseAuthenticationService extends GetxService {
   /// routing for navigate user to correct route by authentication state
   Future<void>? routing() async {
     SchedulerBinding.instance.addPostFrameCallback((_) {
+              print('status isAuthenticated.value ${isAuthenticated.value} +++++++');
+
       // in case user has un-authenticated
       if (isAuthenticated.value == false) {
         print('routing to authentication page +++++++');
