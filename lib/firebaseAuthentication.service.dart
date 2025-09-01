@@ -4,6 +4,7 @@ import 'package:firebase_authentication_service/abstracts/firebaseAuthentication
 import 'package:firebase_authentication_service/abstracts/firebaseAuthenticationServiceUser.abstract.dart';
 import 'package:firebase_authentication_service/enums/authenticationStatus.enum.dart';
 import 'package:firebase_authentication_service/models/baseUser.model.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 
 class FirebaseAuthenticationService extends GetxService {
@@ -124,29 +125,31 @@ class FirebaseAuthenticationService extends GetxService {
 
   /// routing for navigate user to correct route by authentication state
   Future<void>? routing() async {
-    // // In case initialization and still firebase auth try to figure-out
-    // // user auth status
-    // if (isAuthenticated.value == null) {
-    //   return Get.offAllNamed(authenticatedRouting.splashRouteName);
-    // }
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      // In case initialization and still firebase auth try to figure-out
+      // // user auth status
+      // if (isAuthenticated.value == null) {
+      //   return Get.offAllNamed(authenticatedRouting.splashRouteName);
+      // }
 
-    // in case firebase has done and figure-out
-    if (isAuthenticated.value != null) {
-      // // delay to avoid issue that happened coze context-less
-      // await Future.delayed(const Duration(milliseconds: 300));
+      // in case firebase has done and figure-out
+      if (isAuthenticated.value != null) {
+        // // delay to avoid issue that happened coze context-less
+        // await Future.delayed(const Duration(milliseconds: 300));
 
-      // in case user has un-authenticated
-      if (isAuthenticated.isFalse!) {
-        return Get.offAllNamed(authenticatedRouting.authenticationRouteName);
+        // in case user has un-authenticated
+        if (isAuthenticated.isFalse!) {
+          Get.offAllNamed(authenticatedRouting.authenticationRouteName);
+        }
+
+        // final case if user has authenticated
+        Get.offAllNamed(authenticatedRouting.homeRouteName);
+
+        // delay
+        // await Future.delayed(const Duration(milliseconds: 300));
+        // trigger only after authenticated
+        // await userFromExternalDatabase.afterHomeRouteRedirect(user.value!);
       }
-
-      // final case if user has authenticated
-      Get.offAllNamed(authenticatedRouting.homeRouteName);
-
-      // delay
-      // await Future.delayed(const Duration(milliseconds: 300));
-      // trigger only after authenticated
-      // await userFromExternalDatabase.afterHomeRouteRedirect(user.value!);
-    }
+    });
   }
 }
